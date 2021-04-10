@@ -7,8 +7,6 @@
 
 #include "ImageSelection.h"
 
-#define TESSDATA_LOCATION "H:\\tessdata"
-
 /// <summary>
 /// OCR class<br />
 /// <br />
@@ -24,13 +22,15 @@ public:
 	/// Evaluate the OCR based on an image
 	/// </summary>
 	/// <param name="img">The image</param>
-	explicit Interpret(cv::Mat img);
+	/// <param name="tess_location">The location where tessdata is</param>
+	explicit Interpret(cv::Mat img, std::string tess_location);
 
 	/// <summary>
 	/// Evaluate the OCR based on an ImageSelection, by copying an image, will be freed on release
 	/// </summary>
 	/// <param name="is"></param>
-	explicit Interpret(ImageSelection is);
+	/// <param name="tess_location">The location where tessdata is </param>
+	explicit Interpret(ImageSelection is, std::string tess_location);
 	~Interpret();
 
 	/// <summary>
@@ -41,6 +41,7 @@ public:
 
 private:
 	std::string text_;
+	std::string tess_location_;
 	
 	bool internally_created_;
 	cv::Mat img_;

@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
 
 	program.add_argument("-f", "--file").required().help("The Input file");
 	program.add_argument("-o", "--out").required().help("The Output file");
+	program.add_argument("-t", "--tessdata").required().help("The path to tessdata");
 	program.add_argument("--nolog").help("Then only errors and fatal will be shown").default_value(false).implicit_value(true);
 	program.add_argument("--page").help("The page which should be taken").default_value(std::string("1"));
 	program.add_argument("--zoom").help("Zoom factor for OCR").default_value(std::string("100"));
@@ -39,6 +40,7 @@ int main(int argc, char **argv) {
 
 	auto input = program.get<std::string>("-f");
 	auto output = program.get<std::string>("-o");
+	auto tess = program.get<std::string>("-t");
 	auto temp = program.get<std::string>("--temp-file");
 	
 	auto page = std::stoi(program.get<std::string>("--page"));
@@ -60,7 +62,7 @@ int main(int argc, char **argv) {
 		}
 	}
 	
-	Interpret interpret(img_sel);
+	Interpret interpret(img_sel, tess);
 
 	std::ofstream out(output, std::ios::out);
 	out << interpret.GetText();
