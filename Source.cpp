@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
 		}
 	}
 	
-	Interpret interpret(img_sel, tess);
+	Interpret interpret(img_sel, tess, lang);
 
 	std::ofstream out(output, std::ios::out);
 	out << interpret.GetText();
