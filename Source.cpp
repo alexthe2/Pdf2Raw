@@ -66,6 +66,6 @@ int main(int argc, char **argv) {
 	out << interpret.GetText();
 	out.close();
 
-	remove(temp.append(".png").c_str());
+	remove(temp.c_str());
 	return EXIT_SUCCESS;
 }
