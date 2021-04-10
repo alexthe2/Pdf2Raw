@@ -33,7 +33,7 @@ auto Interpret::InitAndEvaluate() -> void {
 	BOOST_LOG_TRIVIAL(info) << "Initializing Tesseract";
 	this->ocr_ = new tesseract::TessBaseAPI();
 
-	BOOST_LOG_TRIVIAL(info) << "Setting language to english";
+	BOOST_LOG_TRIVIAL(info) << "Setting language to " << this->lang_;
 	this->ocr_->Init(this->tess_location_.c_str(), this->lang_.c_str(), tesseract::OEM_LSTM_ONLY);
 	this->ocr_->SetPageSegMode(tesseract::PSM_AUTO);
 
