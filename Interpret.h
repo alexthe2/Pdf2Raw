@@ -23,14 +23,16 @@ public:
 	/// </summary>
 	/// <param name="img">The image</param>
 	/// <param name="tess_location">The location where tessdata is</param>
-	explicit Interpret(cv::Mat img, std::string tess_location);
+	/// <param name="language">Language for tesseract</param>
+	explicit Interpret(cv::Mat img, std::string tess_location, std::string language="eng");
 
 	/// <summary>
 	/// Evaluate the OCR based on an ImageSelection, by copying an image, will be freed on release
 	/// </summary>
 	/// <param name="is"></param>
 	/// <param name="tess_location">The location where tessdata is </param>
-	explicit Interpret(ImageSelection is, std::string tess_location);
+	/// <param name="language">Language for tesseract</param>
+	explicit Interpret(ImageSelection is, std::string tess_location, std::string language = "eng");
 	~Interpret();
 
 	/// <summary>
@@ -42,6 +44,7 @@ public:
 private:
 	std::string text_;
 	std::string tess_location_;
+	std::string lang_;
 	
 	bool internally_created_;
 	cv::Mat img_;
