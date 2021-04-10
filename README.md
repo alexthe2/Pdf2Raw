@@ -10,3 +10,4 @@ Takes a pdf made out of images and runs an OCR over it
 
 # License
 MuPDF is running under AGPL, thus this project is running under AGPL
+If I forgot any license, I am terribly sorry, pm me please so I can fix it
